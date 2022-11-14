@@ -2,8 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 // for better communication between frontend and backend
 const cors = require("cors");
-const userRoutes =  require("./routes/user.js")
-const courseRoutes =  require("./routes/course.js")
+const userRoutes = require("./routes/user.js")
+const courseRoutes = require("./routes/course.js")
 
 const app = express();
 
@@ -12,13 +12,13 @@ mongoose.connect("mongodb+srv://admin:admin123@zuitt.qfnw1x1.mongodb.net/Course-
   useUnifiedTopology: true
 });
 
- //Prompts message in the terminal once connection is open
- mongoose.connection.once("open", () => console.log("Now connected to MongoDB Atlas"))
+//Prompts message in the terminal once connection is open
+mongoose.connection.once("open", () => console.log("Now connected to MongoDB Atlas"))
 
 //Middleware
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
 // Initializing the routes
 app.use('/users', userRoutes);

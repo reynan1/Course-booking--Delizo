@@ -17,7 +17,7 @@ module.exports.createAccessToken = (user) => {
 // To verify a token from the request/from postman
 module.exports.verify = (req, res, next) => {
    let token = req.headers.authorization 
-
+    
    if(typeof token !== "undefined") {
       console.log(token)
 
@@ -25,6 +25,7 @@ module.exports.verify = (req, res, next) => {
 
       // To veryfy the token using jwt, it requires the actual token and the secret key that was used to create it
       return jwt.verify(token, secret, (error, data) => {
+        console.log(token)
         if(error) {
           return res.send({
             auth: "Failed."
